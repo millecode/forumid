@@ -1,0 +1,75 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% set page_title = 'Tableau de bord' %}
+
+{% block admin_content %}
+
+	{# <div class="row g-4">
+			<div class="col-12 col-md-4">
+				<div class="card-soft p-4 hover-lift kpi-card">
+					<div class="d-flex align-items-center justify-content-between">
+						<div>
+							<div class="kpi-label">Partenaires</div>
+							<div class="kpi-value">{{ kpis.partners ?? 0 }}</div>
+						</div>
+						<div class="kpi-icon kpi-icon-emerald" aria-hidden="true">
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M16 11c1.657 0 3-1.567 3-3.5S17.657 4 16 4s-3 1.567-3 3.5S14.343 11 16 11Z" stroke="currentColor" stroke-width="2"/>
+								<path d="M8 11c1.657 0 3-1.567 3-3.5S9.657 4 8 4 5 5.567 5 7.5 6.343 11 8 11Z" stroke="currentColor" stroke-width="2"/>
+								<path d="M3 20v-1c0-2.761 2.686-5 6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								<path d="M21 20v-1c0-2.761-2.686-5-6-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+							</svg>
+						</div>
+					</div>
+					<div class="small text-slate-600 mt-2">Total des partenaires enregistrés</div>
+				</div>
+			</div>
+	
+			<div class="col-12 col-md-4">
+				<div class="card-soft p-4 hover-lift kpi-card">
+					<div class="d-flex align-items-center justify-content-between">
+						<div>
+							<div class="kpi-label">Inscriptions</div>
+							<div class="kpi-value">{{ kpis.registrations ?? 0 }}</div>
+						</div>
+						<div class="kpi-icon kpi-icon-cyan" aria-hidden="true">
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M7 7h10M7 11h10M7 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								<path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2"/>
+							</svg>
+						</div>
+					</div>
+					<div class="small text-slate-600 mt-2">Participants inscrits (placeholder)</div>
+				</div>
+			</div>
+	
+			<div class="col-12 col-md-4">
+				<div class="card-soft p-4 hover-lift kpi-card">
+					<div class="d-flex align-items-center justify-content-between">
+						<div>
+							<div class="kpi-label">Agenda</div>
+							<div class="kpi-value">{{ kpis.agenda_items ?? 0 }}</div>
+						</div>
+						<div class="kpi-icon kpi-icon-dark" aria-hidden="true">
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M8 2v3M16 2v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								<path d="M3 7h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								<path d="M6 5h12a3 3 0 0 1 3 3v11a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3Z" stroke="currentColor" stroke-width="2"/>
+							</svg>
+						</div>
+					</div>
+					<div class="small text-slate-600 mt-2">Éléments agenda (placeholder)</div>
+				</div>
+			</div>
+		</div> #}
+
+	<div class="mt-4">
+		<div class="card-soft p-4">
+			<div class="fw-extrabold text-slate-900 mb-2">Zone de contenu (préparée)</div>
+			<p class="text-slate-600 mb-0" style="line-height:1.8;">
+				Mise à jour plus tard pour le tableau de bord.
+			</p>
+		</div>
+	</div>
+
+{% endblock %}

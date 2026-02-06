@@ -1,0 +1,232 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos - Forum de l'Identité Numérique
+{% endblock %}
+
+{# Même comportement que Home : navbar style "hero" puis change au scroll #}
+{% block nav_on_hero %}1
+{% endblock %}
+
+{% block body %}
+
+	{# =========================
+	   HERO / INTRO
+	========================= #}
+	<section class="page-hero">
+		<div class="container text-center hero-inner">
+			<span class="hero-pill">Forum sur l'identité numérique</span>
+
+			<h1 class="hero-title">
+				À propos du Forum de
+				<span class="gradient-text">l'Identité Numérique</span>
+			</h1>
+
+			<p class="hero-subtitle mx-auto">
+				Un cadre national de réflexion, de concertation et de visibilité autour de l'identité numérique,
+				      marquant le lancement officiel de la solution Mobile ID.
+			</p>
+
+			<div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+				<span class="hero-chip">Vision nationale</span>
+				<span class="hero-chip">Interopérabilité &amp; confiance</span>
+				<span class="hero-chip">Partenariats régionaux</span>
+			</div>
+		</div>
+	</section>
+
+	{# =========================
+	   CONTEXTE
+	========================= #}
+	<section class="section-white">
+		<div class="container">
+			<div class="row g-4 align-items-start">
+				<div class="col-lg-6">
+					<span class="badge-soft">Contexte</span>
+
+					<h2 class="section-h2 mt-3">
+						Accélérer la transformation<br class="d-none d-md-block">
+						numérique par une identité unifiée
+					</h2>
+
+					<p class="text-muted lh-lg mt-3">
+						Dans le cadre de la transformation numérique, Djibouti a engagé des cadres stratégiques structurants
+						          pour moderniser l'action publique et développer les services numériques. En l'absence d'une stratégie
+						          nationale d'e-gouvernement formalisée, ces orientations restent encore insuffisamment coordonnées.
+					</p>
+
+					<p class="text-muted lh-lg">
+						Les projets en cours se heurtent à une contrainte majeure : l'absence d'un mécanisme d'identification
+						          numérique unifié, fiable et interopérable. Le forum permet de dresser un état des lieux, d'identifier
+						          les axes d'amélioration prioritaires et de créer un espace de dialogue entre acteurs publics, privés
+						          et partenaires techniques, y compris à l'échelle régionale.
+					</p>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="row g-3">
+						<div class="col-12">
+							<div class="card-gradient p-4">
+								<h3 class="card-gradient-title mb-2">Pourquoi un forum national ?</h3>
+								<p class="card-gradient-text mb-0">
+									Comparer les expériences régionales, partager les bonnes pratiques et aligner les priorités nationales
+									                pour accélérer l'écosystème de l'identité numérique.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Vision coordonnée</h4>
+								<p class="card-soft-text mb-0">
+									Structurer une approche nationale cohérente et opérationnelle.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Identité fiable</h4>
+								<p class="card-soft-text mb-0">
+									Renforcer la confiance, la sécurité et l'interopérabilité des services.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{# =========================
+	   OBJECTIFS
+	========================= #}
+	<section class="section-gray">
+		<div class="container">
+			<div class="text-center section-head">
+				<span class="badge-soft">Objectifs</span>
+				<h2 class="section-h2 mt-3">Un cap clair pour Mobile ID</h2>
+				<p class="text-muted mx-auto section-lead">
+					Le forum vise à renforcer la concertation nationale et à positionner Mobile ID comme un pilier structurant
+					        de la transformation numérique du pays.
+				</p>
+			</div>
+
+			<div class="row g-4 align-items-stretch mt-1">
+				<div class="col-lg-5">
+					<div class="card-gradient p-4 h-100">
+						<h3 class="card-gradient-title mb-2">Objectif général</h3>
+						<p class="card-gradient-text mb-0">
+							Constituer un cadre national de réflexion, de concertation et de visibilité autour de l'identité
+							            numérique, tout en marquant le lancement officiel de Mobile ID.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-7">
+					<div class="row g-3">
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Vision nationale</h4>
+								<p class="card-soft-text mb-0">
+									Présenter les orientations stratégiques en matière d'identité numérique.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Initiatives existantes</h4>
+								<p class="card-soft-text mb-0">
+									Mettre en lumière les projets en cours et les acquis.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Confiance &amp; sécurité</h4>
+								<p class="card-soft-text mb-0">
+									Sensibiliser aux enjeux de sécurité et d'interopérabilité.
+								</p>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card-soft h-100 p-4">
+								<h4 class="card-soft-title">Appropriation de Mobile ID</h4>
+								<p class="card-soft-text mb-0">
+									Favoriser l'adoption par administrations, entreprises et usagers.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	{# =========================
+	   RÉSULTATS ATTENDUS
+	========================= #}
+	<section class="section-white">
+		<div class="container">
+			<div class="text-center section-head">
+				<span class="badge-soft">Résultats attendus</span>
+				<h2 class="section-h2 mt-3">Des impacts concrets</h2>
+				<p class="text-muted mx-auto section-lead">
+					À l'issue du forum, les acteurs disposeront d'une vision partagée et de recommandations opérationnelles.
+				</p>
+			</div>
+
+			<div class="row g-3 mt-1">
+				<div class="col-lg-4">
+					<div class="card-lite p-4 h-100">
+						<h3 class="card-lite-title">Enjeux partagés</h3>
+						<p class="card-lite-text mb-0">
+							Compréhension commune des enjeux stratégiques de l'identité numérique.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="card-lite p-4 h-100">
+						<h3 class="card-lite-title">Visibilité renforcée</h3>
+						<p class="card-lite-text mb-0">
+							Meilleure visibilité institutionnelle et publique du lancement de Mobile ID.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="card-lite p-4 h-100">
+						<h3 class="card-lite-title">Alignement national</h3>
+						<p class="card-lite-text mb-0">
+							Convergence des priorités entre acteurs publics et privés.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card-lite p-4 h-100">
+						<h3 class="card-lite-title">Recommandations</h3>
+						<p class="card-lite-text mb-0">
+							Recommandations opérationnelles issues des échanges et ateliers.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-lg-6">
+					<div class="card-lite p-4 h-100">
+						<h3 class="card-lite-title">Partenariats</h3>
+						<p class="card-lite-text mb-0">
+							Pistes de collaboration structurantes, y compris à l'échelle régionale.
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}

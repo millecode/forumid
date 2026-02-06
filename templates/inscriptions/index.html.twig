@@ -1,0 +1,197 @@
+{# templates/inscriptions/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription - Forum de l'Identité Numérique
+{% endblock %}
+
+{# Si ton base.html.twig utilise cette variable pour la navbar "hero" #}
+{% set nav_on_hero = 1 %}
+
+{% block body %}
+	<main
+		class="page-inscription" data-nav-on-hero="1">
+
+		{# HERO #}
+		<section class="page-hero insc-hero">
+			<div class="container text-center hero-inner">
+				<div data-reveal="0">
+					<span class="hero-pill insc-pill">
+						28 - 29 Janvier 2025
+					</span>
+				</div>
+
+				<h1 class="insc-title mt-3 mb-3" data-reveal="100">
+					Inscription des participants
+				</h1>
+
+				<p class="insc-subtitle mx-auto mb-0" data-reveal="200">
+					Rejoignez le Forum de l'Identité Numérique pour contribuer à la transformation digitale du pays.
+				</p>
+			</div>
+		</section>
+
+		{# CONTENT #}
+		<section class="insc-section">
+			<div class="container">
+				<div
+					class="row g-4 g-lg-5 align-items-start">
+
+					{# LEFT COLUMN #}
+					<div class="col-12 col-lg-5" data-reveal="0">
+						<div class="d-grid gap-4">
+
+							<div class="insc-card insc-card-white">
+								<h2 class="insc-card-title">Pourquoi s'inscrire ?</h2>
+								<p class="insc-card-text mb-3">
+									Participez aux échanges nationaux sur l'identité numérique et le lancement de Mobile ID.
+								</p>
+
+								<ul class="insc-list mb-0">
+									<li>
+										<span class="dot dot-emerald"></span>
+										Rencontrer les institutions, experts et partenaires techniques.
+									</li>
+									<li>
+										<span class="dot dot-cyan"></span>
+										Comprendre les enjeux de confiance, sécurité et interopérabilité.
+									</li>
+									<li>
+										<span class="dot dot-emerald"></span>
+										Découvrir les perspectives d'intégration de Mobile ID.
+									</li>
+								</ul>
+							</div>
+
+							<div class="insc-card insc-card-dark">
+								<h3 class="insc-help-title">Besoin d'aide ?</h3>
+								<p class="insc-help-text">
+									Notre équipe est disponible pour toute question sur l'inscription.
+								</p>
+
+								<div class="insc-help-line">
+									<span class="insc-help-label">Email</span>
+									<span class="insc-help-value">contact@mobileid.dj</span>
+								</div>
+								<div class="insc-help-line">
+									<span class="insc-help-label">Tél</span>
+									<span class="insc-help-value">+253 21 35 XX XX</span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					{# RIGHT COLUMN (FORM) #}
+					<div class="col-12 col-lg-7" data-reveal="100">
+						<div class="insc-card insc-card-form">
+
+							<div class="insc-form-head">
+								<span class="insc-chip">Formulaire</span>
+								<h2 class="insc-form-title">Informations du participant</h2>
+								<p class="insc-form-lead mb-0">
+									Tous les champs sont obligatoires. Un email de confirmation vous sera envoyé après validation de votre inscription.
+								</p>
+							</div>
+
+							{# Flash messages #}
+							{% for message in app.flashes('success') %}
+								<div class="alert alert-success insc-alert" role="alert">{{ message }}</div>
+							{% endfor %}
+							{% for message in app.flashes('error') %}
+								<div class="alert alert-danger insc-alert" role="alert">{{ message }}</div>
+							{% endfor %}
+
+							{# Erreurs globales du formulaire (ex: validation cross-field) #}
+							{% if form is defined and form.vars.errors|length > 0 %}
+								<div class="alert alert-danger insc-alert" role="alert">
+									{{ form_errors(form) }}
+								</div>
+							{% endif %}
+
+							{# FORM Symfony (CSRF inclus par défaut) #}
+							{{ form_start(form, {
+								attr: {
+									class: 'insc-form',
+									'data-insc-form': ''
+								}
+							}) }}
+
+							<div class="mb-3">
+								{{ form_label(form.fullName, 'Nom complet', { label_attr: { class: 'form-label insc-label' } }) }}
+								{{ form_widget(form.fullName, {
+									attr: {
+										class: 'form-control insc-input',
+										placeholder: 'Votre nom et prénom',
+										autocomplete: 'name'
+									}
+								}) }}
+								<div class="text-danger small mt-1">{{ form_errors(form.fullName) }}</div>
+							</div>
+
+							<div class="row g-3">
+								<div class="col-12 col-md-6">
+									{{ form_label(form.email, 'Email', { label_attr: { class: 'form-label insc-label' } }) }}
+									{{ form_widget(form.email, {
+										attr: {
+											class: 'form-control insc-input',
+											placeholder: 'exemple@domaine.dj',
+											autocomplete: 'email'
+										}
+									}) }}
+									<div class="text-danger small mt-1">{{ form_errors(form.email) }}</div>
+								</div>
+
+								<div class="col-12 col-md-6">
+									{{ form_label(form.phone, 'Numéro de téléphone', { label_attr: { class: 'form-label insc-label' } }) }}
+									{{ form_widget(form.phone, {
+										attr: {
+											class: 'form-control insc-input',
+											placeholder: '+253 77 00 00 00',
+											inputmode: 'tel',
+											autocomplete: 'tel'
+										}
+									}) }}
+									<div class="text-danger small mt-1">{{ form_errors(form.phone) }}</div>
+								</div>
+							</div>
+
+							<div class="row g-3 mt-1">
+								<div class="col-12 col-md-6">
+									{{ form_label(form.institution, 'Institution représentée', { label_attr: { class: 'form-label insc-label' } }) }}
+									{{ form_widget(form.institution, {
+										attr: {
+											class: 'form-control insc-input',
+											placeholder: 'Ministère, entreprise, organisation'
+										}
+									}) }}
+									<div class="text-danger small mt-1">{{ form_errors(form.institution) }}</div>
+								</div>
+
+								<div class="col-12 col-md-6">
+									{{ form_label(form.role, 'Fonction', { label_attr: { class: 'form-label insc-label' } }) }}
+									{{ form_widget(form.role, {
+										attr: {
+											class: 'form-control insc-input',
+											placeholder: 'Directeur, chargé de mission, etc.'
+										}
+									}) }}
+									<div class="text-danger small mt-1">{{ form_errors(form.role) }}</div>
+								</div>
+							</div>
+
+							<div class="mt-4">
+								<button type="submit" class="btn insc-submit">
+									Envoyer l'inscription
+								</button>
+							</div>
+
+							{{ form_end(form) }}
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}

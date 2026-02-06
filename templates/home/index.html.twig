@@ -1,0 +1,440 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Forum de l'Identité Numérique
+{% endblock %}
+
+{% block body %}
+
+
+	<!-- =========================
+				         HERO
+				    ========================== -->
+	<section
+		class="hero position-relative overflow-hidden d-flex align-items-center">
+		<!-- blobs -->
+		<div class="hero-blob hero-blob-1"></div>
+		<div class="hero-blob hero-blob-2"></div>
+
+		<div class="container-xl hero-inner text-center position-relative z-2">
+			<div
+				data-reveal="0">
+
+				<!-- Glass Patronage Card -->
+				<div class="mx-auto mb-4" style="max-width: 860px;">
+					<div class="glass-card p-4 p-md-5">
+						<p class="text-white-80 fw-medium mb-2">Sous le Haut Patronage de</p>
+						<p class="text-white fw-bold fs-5 fs-md-4 mb-2">Son Excellence</p>
+						<p class="fw-extrabold fs-4 fs-md-2 mb-2 text-gradient">
+							Monsieur Ismaïl Omar Guelleh
+						</p>
+						<p class="text-white-90 fw-semibold mb-0 fs-6 fs-md-5">
+							Président de la République de Djibouti
+						</p>
+					</div>
+				</div>
+
+				<!-- Date badge -->
+				<div class="mb-4">
+					<span class="badge badge-soft-emerald px-3 py-2">
+						{% if activeEventDate %}
+							{% set sd = activeEventDate.startDate %}
+							{% set ed = activeEventDate.endDate %}
+
+							{% if sd|date('Y-m') == ed|date('Y-m') %}
+								{{ sd|format_datetime(locale='fr', pattern='d') }}
+								-
+								{{ ed|format_datetime(locale='fr', pattern='d MMMM y') }}
+								- Djibouti
+							{% else %}
+								{{ sd|format_datetime(locale='fr', pattern='d MMMM') }}
+								-
+								{{ ed|format_datetime(locale='fr', pattern='d MMMM y') }}
+								- Djibouti
+							{% endif %}
+						{% else %}
+							Dates à confirmer - Djibouti
+						{% endif %}
+					</span>
+
+				</div>
+
+				<!-- Title -->
+				<h1 class="hero-title fw-extrabold text-white mb-3">
+					Forum de<br>
+					<span class="text-gradient">l'Identité Numérique</span>
+				</h1>
+
+				<p class="hero-subtitle text-slate-300 mb-4 mx-auto" style="max-width: 880px;" data-countdown-label>
+					Lancement officiel de Mobile ID
+				</p>
+
+
+				<!-- Countdown -->
+				<div id="countdown-timer" data-reveal="100" class="mb-4 px-2" {% if countdownStartIso %} data-countdown-start="{{ countdownStartIso }}" {% endif %} {% if countdownEndIso %} data-countdown-end="{{ countdownEndIso }}" {% endif %}>
+
+					<div class="d-flex justify-content-center gap-2 gap-sm-3 gap-md-4 flex-wrap">
+						<div class="count-box">
+							<div class="count-value" data-days>0</div>
+							<div class="count-label">Jours</div>
+						</div>
+						<div class="count-box">
+							<div class="count-value" data-hours>0</div>
+							<div class="count-label">Heures</div>
+						</div>
+						<div class="count-box">
+							<div class="count-value" data-minutes>0</div>
+							<div class="count-label">Minutes</div>
+						</div>
+						<div class="count-box">
+							<div class="count-value" data-seconds>0</div>
+							<div class="count-label">Secondes</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- CTA buttons -->
+				<div data-reveal="200" class="d-flex flex-wrap justify-content-center gap-3">
+					<a href="/programme" class="btn btn-gradient px-4 px-md-5 py-3 fw-semibold">
+						Découvrir le programme
+					</a>
+					<a href="/inscription" class="btn btn-glass px-4 px-md-5 py-3 fw-semibold">
+						S'inscrire
+					</a>
+				</div>
+
+			</div>
+
+			<!-- 3 Feature cards (dans ton blade elles sont sous le CTA) -->
+			<div class="row g-3 g-md-4 justify-content-center mt-5" style="max-width: 980px; margin-inline:auto;">
+				<div class="col-12 col-md-4" data-reveal="300">
+					<div class="glass-mini h-100 text-center p-4">
+						<div
+							class="icon-sq icon-sq-cyan mb-3 mx-auto">
+							<!-- SVG (repris de ton code) -->
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M10 6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M12 6V5a2 2 0 1 1 4 0v1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M10 6a2 2 0 1 0 4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M8 14a3 3 0 0 1 5.66-1M9 14a3 3 0 0 0-2.83 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M15 11h3M15 15h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3 class="text-white fw-semibold mb-2 fs-5">Identité Numérique</h3>
+						<p class="text-slate-300 mb-0 small">
+							Présenter la vision nationale et les orientations stratégiques en matière d'identité numérique
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-4" data-reveal="400">
+					<div class="glass-mini h-100 text-center p-4">
+						<div class="icon-sq icon-sq-emerald mb-3 mx-auto">
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								<path d="M8 21h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3 class="text-white fw-semibold mb-2 fs-5">Mobile ID</h3>
+						<p class="text-slate-300 mb-0 small">
+							Lancement officiel de Mobile ID comme pilier de la transformation numérique du pays
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-4" data-reveal="500">
+					<div class="glass-mini h-100 text-center p-4">
+						<div class="icon-sq icon-sq-cyan2 mb-3 mx-auto">
+							<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+								<path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M21.618 8.984A11.955 11.955 0 0 1 12 2.944
+																																				                           11.955 11.955 0 0 1 2.382 5.984
+																																				                           12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622
+																																				                           5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</div>
+						<h3 class="text-white fw-semibold mb-2 fs-5">Sécurité & Confiance</h3>
+						<p class="text-slate-300 mb-0 small">
+							Sensibiliser aux enjeux de confiance, de sécurité et d'interopérabilité
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- bounce arrow -->
+		<div class="hero-arrow position-absolute start-50 translate-middle-x">
+			<svg width="22" height="22" viewbox="0 0 24 24" fill="none">
+				<path d="M19 14l-7 7-7-7m7 7V3" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</div>
+	</section>
+
+
+	<!-- =========================
+				         ORGANISATION
+				    ========================== -->
+	<section class="py-5 py-lg-6 bg-slate-50">
+		<div class="container-xl">
+			<div class="row align-items-center g-5">
+				<div class="col-12 col-lg-6" data-reveal="0">
+					<span class="badge badge-soft-emerald2 px-3 py-2 mb-3">Organisation</span>
+					<h2 class="fw-extrabold text-slate-900 mb-3 display-6">
+						Ministère de l'Intérieur
+					</h2>
+
+					<p class="lead text-slate-600 mb-3">
+						Le Ministère de l'Intérieur organise ce forum national pour lancer officiellement Mobile ID et renforcer l'écosystème de l'identité numérique dans le pays.
+					</p>
+					<p class="lead text-slate-600 mb-4">
+						Cette initiative témoigne de l'engagement de l'État dans la transformation numérique, la modernisation des services publics et le développement d'une infrastructure d'identification sécurisée et interopérable.
+					</p>
+
+					<a class="link-emerald fw-semibold d-inline-flex align-items-center gap-2" href="/a-propos">
+						En savoir plus sur l'événement
+						<svg width="18" height="18" viewbox="0 0 24 24" fill="none">
+							<path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</a>
+				</div>
+
+				<div class="col-12 col-lg-6 text-center">
+					<img src="assets/interieur.png" alt="Ministère de l'Intérieur" class="img-fluid" style="max-width: 420px;">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- =========================
+				         POURQUOI CE FORUM ?
+				    ========================== -->
+	<section class="py-5 py-lg-6 bg-white">
+		<div class="container-xl">
+
+			<div class="text-center mb-5" data-reveal="0">
+				<span class="badge badge-soft-emerald2 px-3 py-2 mb-3">
+					Une transformation numérique sécurisée et inclusive
+				</span>
+				<h2 class="section-title mb-3">Pourquoi ce Forum ?</h2>
+				<p class="section-subtitle mx-auto" style="max-width: 860px;">
+					Un événement majeur pour lancer Mobile ID et mobiliser tous les acteurs autour de l'identité numérique.
+				</p>
+				<div class="d-inline-flex align-items-center gap-3 mt-3 text-emerald-700 fw-semibold">
+					<span class="small">Mettre l'identité numérique au service de tous</span>
+					<span class="line-soft"></span>
+				</div>
+			</div>
+
+			<div
+				class="row g-4">
+
+				<!-- Point central (large) -->
+				<div class="col-12" data-reveal="0">
+					<div class="card card-grad-emerald text-white border-0 rounded-4 shadow-xl p-4 p-md-4">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<span class="text-uppercase small text-white-80 fw-semibold">Point central</span>
+							<span class="fs-3">★</span>
+						</div>
+						<h3 class="fw-extrabold mb-2 fs-3">Lancement officiel de Mobile ID</h3>
+						<p class="mb-0 text-white-90">
+							Signature du lancement en présence de Son Excellence le Président de la République, pour marquer un tournant national.
+						</p>
+					</div>
+				</div>
+
+				<!-- Panels -->
+				<div class="col-12 col-md-6" data-reveal="100">
+					<div class="card card-soft border-0 rounded-4 shadow-sm p-4 h-100">
+						<div class="fs-2 mb-2">👥</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Panels d'experts</h3>
+						<p class="text-slate-600 mb-0">
+							3 panels thématiques sur l'inclusion financière, les services publics et la valeur ajoutée de Mobile ID.
+						</p>
+					</div>
+				</div>
+
+				<!-- Etat des lieux -->
+				<div class="col-12 col-md-6" data-reveal="200">
+					<div class="card card-soft border-0 rounded-4 shadow-sm p-4 h-100">
+						<div class="fs-2 mb-2">📊</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">État des lieux</h3>
+						<p class="text-slate-600 mb-0">
+							Défis, enjeux stratégiques et cadre juridique de l'identité numérique à Djibouti.
+						</p>
+					</div>
+				</div>
+
+				<!-- Partenariats régionaux (large dark) -->
+				<div class="col-12" data-reveal="300">
+					<div class="card card-dark border-0 rounded-4 shadow-xl p-4 p-md-4 text-white">
+						<div class="d-flex justify-content-between align-items-center mb-3">
+							<span class="text-uppercase small text-white-70 fw-semibold">Ouverture régionale</span>
+							<span class="fs-3">🌍</span>
+						</div>
+						<h3 class="fw-extrabold mb-2 fs-3">Partenariats régionaux</h3>
+						<p class="mb-0 text-white-85">
+							Favoriser l'émergence de collaborations durables avec les pays voisins et les partenaires techniques.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<!-- =========================
+				         QUI PARTICIPERA ?
+				    ========================== -->
+	<section class="py-5 py-lg-6 bg-soft-gradient">
+		<div class="container-xl">
+
+			<div class="text-center mb-5" data-reveal="0">
+				<span class="badge badge-white-soft px-3 py-2 mb-3">Une mobilisation collective</span>
+				<h2 class="section-title mb-3">Qui participera ?</h2>
+				<p class="section-subtitle mx-auto" style="max-width: 860px;">
+					Une convergence des acteurs publics, privés et techniques pour une transformation numérique inclusive
+				</p>
+			</div>
+
+			<div class="row g-4">
+				<div class="col-12 col-lg-6" data-reveal="0">
+					<div class="card hover-lift border-0 rounded-4 shadow-lg p-4 p-md-5 h-100">
+						<div class="display-5 mb-3">🏛️</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Institutions Publiques</h3>
+						<p class="text-slate-600 mb-0">
+							Ministère de l'Intérieur, MDENI, ANSIE, CNSS, DGDDI, DPCS et autres administrations.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-lg-6" data-reveal="100">
+					<div class="card hover-lift border-0 rounded-4 shadow-lg p-4 p-md-5 h-100">
+						<div class="display-5 mb-3">🏦</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Secteur Bancaire & Financier</h3>
+						<p class="text-slate-600 mb-0">
+							Banques commerciales, Banque Centrale, services de mobile money pour l'inclusion financière.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4" data-reveal="200">
+					<div class="card hover-lift border-0 rounded-4 shadow-lg p-4 p-md-5 h-100">
+						<div class="display-5 mb-3">💼</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Secteur Privé & Télécoms</h3>
+						<p class="text-slate-600 mb-0">
+							TO7 Network, Djibouti Télécom, entreprises privées et opérateurs télécoms pour déployer Mobile ID.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4" data-reveal="300">
+					<div class="card hover-lift border-0 rounded-4 shadow-lg p-4 p-md-5 h-100">
+						<div class="display-5 mb-3">🌍</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Experts Internationaux</h3>
+						<p class="text-slate-600 mb-0">
+							Experts francophones en identité numérique, notamment du Rwanda, pour partager les bonnes pratiques.
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6 col-lg-4" data-reveal="400">
+					<div class="card hover-lift border-0 rounded-4 shadow-lg p-4 p-md-5 h-100">
+						<div class="display-5 mb-3">🤝</div>
+						<h3 class="fw-extrabold text-slate-900 mb-2 fs-4">Partenaires Techniques</h3>
+						<p class="text-slate-600 mb-0">
+							Banque Mondiale et autres partenaires techniques et financiers pour soutenir la transformation.
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- =========================
+				         NOS PARTENAIRES
+				    ========================== -->
+	<section class="py-5 py-lg-6 bg-white">
+		<div class="container-xl">
+
+			<div class="text-center mb-5" data-reveal="0">
+				<span class="badge badge-soft-emerald2 px-3 py-2 mb-3">Collaboration nationale</span>
+				<h2 class="section-title mb-3">Nos partenaires</h2>
+				<p class="section-subtitle mx-auto" style="max-width: 860px;">
+					Une mobilisation collective pour renforcer l'identité numérique à Djibouti
+				</p>
+			</div>
+
+			<div class="row g-4 justify-content-center" style="max-width: 980px; margin-inline:auto;">
+				<div class="col-12 col-md-6" data-reveal="100">
+					<div class="partner-card rounded-4 p-4 p-md-5 text-center h-100">
+						<img src="assets/logo_to7.png" alt="TO7 Network Logo" class="partner-logo mb-3">
+						<h3 class="fw-extrabold text-slate-900 mb-1 fs-4">TO7</h3>
+						<p class="text-slate-600 mb-0 small">TO7 Network</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6" data-reveal="100">
+					<div class="partner-card rounded-4 p-4 p-md-5 text-center h-100">
+						<img src="assets/anc-logo.png" alt="ANC Logo" class="partner-logo mb-3">
+						<h3 class="fw-extrabold text-slate-900 mb-1 fs-4">ANC</h3>
+						<p class="text-slate-600 mb-0 small">Autorité Nationale de Cybersécurité</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6" data-reveal="100">
+					<div class="partner-card rounded-4 p-4 p-md-5 text-center h-100">
+						<img src="assets/mdeni-logo.jpeg" alt="MDENI Logo" class="partner-logo mb-3">
+						<h3 class="fw-extrabold text-slate-900 mb-1 fs-4">MDENI</h3>
+						<p class="text-slate-600 mb-0 small">
+							Ministère Délégué à l'Economie Numérique et à l'Innovation
+						</p>
+					</div>
+				</div>
+
+				<div class="col-12 col-md-6" data-reveal="100">
+					<div class="partner-card rounded-4 p-4 p-md-5 text-center h-100">
+						<img src="assets/ansie-logo.png" alt="ANSIE Logo" class="partner-logo mb-3">
+						<h3 class="fw-extrabold text-slate-900 mb-1 fs-4">ANSIE</h3>
+						<p class="text-slate-600 mb-0 small">
+							Agence Nationale des Systèmes d'Informations de l'État
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<!-- =========================
+				         CTA SECTION (dark)
+				    ========================== -->
+	<section class="py-5 py-lg-6 cta-dark text-white">
+		<div class="container-xl">
+			<div class="text-center" data-reveal="0">
+				<div class="mb-4">
+					<img src="assets/logo.png" alt="Mobile ID Djibouti" class="cta-logo mb-3">
+				</div>
+
+				<h2 class="fw-extrabold mb-3 display-6">Mobile ID Djibouti</h2>
+				<p class="fs-5 text-cyan-50 mb-4 mx-auto" style="max-width: 760px;">
+					L'identité numérique au service de la transformation digitale et de l'inclusion financière.
+				</p>
+
+				<div class="d-flex flex-wrap justify-content-center gap-3">
+					<a href="/programme" class="btn btn-light-emerald px-4 px-md-5 py-3 fw-semibold">
+						Découvrir le programme complet
+					</a>
+					<a href="/inscription" class="btn btn-outline-emerald px-4 px-md-5 py-3 fw-semibold">
+						Inscription participants
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}

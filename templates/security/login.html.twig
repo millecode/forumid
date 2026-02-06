@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion | Administration
+{% endblock %}
+
+{% block body %}
+	<section class="page-hero">
+		<div class="container text-center hero-inner">
+			<div data-reveal="0">
+				<span class="hero-pill">Espace Admin</span>
+			</div>
+
+			<h1 class="hero-title" data-reveal="80">
+				Connexion
+				<span class="gradient-text">Administration</span>
+			</h1>
+
+			<p class="hero-subtitle" data-reveal="140">
+				Accès réservé. Veuillez vous authentifier pour accéder au tableau de bord.
+			</p>
+		</div>
+	</section>
+
+	<section class="auth-section">
+		<div class="container py-4 py-lg-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 col-xl-6">
+
+					<div class="auth-card p-4 p-md-5" data-reveal="0">
+						<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+							<span class="badge-soft">Connexion</span>
+							<span class="text-muted small">Sécurisé (CSRF + PasswordHasher)</span>
+						</div>
+
+						{% if error %}
+							<div class="alert alert-danger rounded-4 border-0 mb-3">
+								{{ error.messageKey|trans(error.messageData, 'security') }}
+							</div>
+						{% endif %}
+
+						<form method="post" class="needs-validation" novalidate>
+							<div class="mb-3">
+								<label class="form-label fw-semibold">Email</label>
+								<input type="email" name="email" class="form-control form-control-lg form-control-premium" placeholder="exemple@domaine.dj" value="{{ last_username }}" autocomplete="email" required>
+							</div>
+
+							<div class="mb-3">
+								<label class="form-label fw-semibold">Mot de passe</label>
+								<input type="password" name="password" class="form-control form-control-lg form-control-premium" placeholder="••••••••" autocomplete="current-password" required>
+							</div>
+
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+							<div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mt-4">
+								<button class="btn btn-emerald btn-lg px-4" type="submit">
+									Se connecter
+								</button>
+
+								<div class="auth-note">
+									Besoin d’aide ?
+									<span class="fw-bold">contact@mobileid.dj</span>
+								</div>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

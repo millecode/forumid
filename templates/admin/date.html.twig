@@ -1,0 +1,144 @@
+{% extends 'admin/base_admin.html.twig' %}
+
+{% block admin_content %}
+
+	{# Flash messages #}
+	{% for label, messages in app.flashes %}
+		{% for msg in messages %}
+			<div class="alert alert-{{ label == 'danger' ? 'danger' : (label == 'success' ? 'success' : 'info') }} rounded-4 shadow-sm">
+				{{ msg }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+
+	<div
+		class="row g-4 align-items-start">
+
+		{# ===== Col gauche : Formulaire ===== #}
+		<div class="col-12 col-md-4">
+			<div class="card-soft p-4 hover-lift">
+				<div class="d-flex align-items-center justify-content-between mb-3">
+					<div>
+						<div class="fw-extrabold text-slate-900">
+							{{ edit_mode ? 'Modifier une date' : 'Ajouter une date' }}
+						</div>
+						<div class="small text-slate-600">
+							Saisir la période (début → fin)
+						</div>
+					</div>
+					<span class="badge-soft-emerald2">{{ edit_mode ? 'Édition' : 'Nouveau' }}</span>
+				</div>
+
+				{{ form_start(form) }}
+
+				<div class="mb-3">
+					{{ form_label(form.startDate, null, {'label_attr': {'class': 'form-label fw-bold text-slate-900'}}) }}
+					{{ form_widget(form.startDate) }}
+					{{ form_errors(form.startDate) }}
+				</div>
+
+				<div class="mb-3">
+					{{ form_label(form.endDate, null, {'label_attr': {'class': 'form-label fw-bold text-slate-900'}}) }}
+					{{ form_widget(form.endDate) }}
+					{{ form_errors(form.endDate) }}
+				</div>
+
+				{# erreurs globales (ex: start <= end) #}
+				{{ form_errors(form) }}
+
+				<div class="d-flex gap-2 pt-2">
+					<button type="submit" class="btn site-btn-inscription flex-grow-1">
+						{{ edit_mode ? 'Enregistrer' : 'Ajouter' }}
+					</button>
+
+					{% if edit_mode %}
+						<a href="{{ path('admin_dates_index') }}" class="btn btn-outline-secondary rounded-4">
+							Annuler
+						</a>
+					{% endif %}
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+
+
+		</div>
+
+		{# ===== Col droite : Table ===== #}
+		<div class="col-12 col-md-8">
+			<div class="card-soft p-4 hover-lift">
+				<div class="d-flex align-items-center justify-content-between mb-3">
+					<div>
+						<div class="fw-extrabold text-slate-900">Liste des dates</div>
+						<div class="small text-slate-600">Gérer les périodes enregistrées</div>
+					</div>
+					<span class="badge-soft-emerald2">{{ dates|length }}
+						total</span>
+				</div>
+
+				<div class="table-responsive">
+					<table class="table align-middle mb-0 admin-table">
+						<thead>
+							<tr class="text-slate-600 small">
+								<th>Date début</th>
+								<th>Date fin</th>
+								<th>Status</th>
+								<th class="text-end">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if dates is empty %}
+								<tr>
+									<td colspan="4" class="text-center text-slate-600 py-4">
+										Aucune date enregistrée.
+									</td>
+								</tr>
+							{% endif %}
+
+							{% for d in dates %}
+								<tr class="{{ edit_mode and edit_id == d.id ? 'table-active' : '' }}">
+									<td class="fw-bold text-slate-900">{{ d.startDate|date('d/m/Y') }}</td>
+									<td class="text-slate-900">{{ d.endDate|date('d/m/Y') }}</td>
+
+									<td>
+										<form method="post" action="{{ path('admin_dates_activate') }}" class="d-inline">
+											<input type="hidden" name="_token" value="{{ csrf_token('activate_date') }}">
+											<div class="form-check form-check-inline m-0">
+												<input class="form-check-input" type="radio" name="active_id" value="{{ d.id }}" {{ d.isActive ? 'checked' : '' }} data-admin-autosubmit>
+												<label class="form-check-label small">
+													{{ d.isActive ? 'Active' : 'Inactive' }}
+												</label>
+											</div>
+										</form>
+									</td>
+
+									<td class="text-end">
+										<a href="{{ path('admin_dates_edit', {id: d.id}) }}" class="btn btn-sm admin-icon-action admin-icon-edit" title="Modifier">
+											<svg width="18" height="18" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+												<path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+												<path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+											</svg>
+										</a>
+
+										<form method="post" action="{{ path('admin_dates_delete', {id: d.id}) }}" class="d-inline" onsubmit="return confirm('Supprimer cette date ?');">
+											<input type="hidden" name="_token" value="{{ csrf_token('delete_date' ~ d.id) }}">
+											<button type="submit" class="btn btn-sm admin-icon-action admin-icon-delete" title="Supprimer">
+												<svg width="18" height="18" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+													<path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+													<path d="M8 6V4h8v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+													<path d="M7 6l1 14h8l1-14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+												</svg>
+											</button>
+										</form>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

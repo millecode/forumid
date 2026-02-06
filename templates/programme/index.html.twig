@@ -1,0 +1,235 @@
+{# templates/programme/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Programme - Forum de l'Identité Numérique
+{% endblock %}
+
+{% block body %}
+	<main
+		class="page-programme">
+
+		{# HERO #}
+		<section class="page-hero programme-hero">
+			<div class="container text-center hero-inner">
+
+				<div data-reveal="0">
+					<span class="badge-soft-emerald programme-pill">
+						{% if activeEventDate %}
+							{% set sd = activeEventDate.startDate %}
+							{% set ed = activeEventDate.endDate %}
+
+							{# Même mois => "28 - 29 janvier 2025" ; sinon => "28 janvier - 02 février 2026" #}
+							{% if sd|date('Y-m') == ed|date('Y-m') %}
+								{{ sd|format_datetime(locale='fr', pattern='d') }}
+								-
+								{{ ed|format_datetime(locale='fr', pattern='d MMMM y') }}
+								- Djibouti
+							{% else %}
+								{{ sd|format_datetime(locale='fr', pattern='d MMMM') }}
+								-
+								{{ ed|format_datetime(locale='fr', pattern='d MMMM y') }}
+								- Djibouti
+							{% endif %}
+						{% else %}
+							Dates à confirmer - Djibouti
+						{% endif %}
+					</span>
+				</div>
+
+				<h1 class="programme-title mt-3 mb-3" data-reveal="100">
+					Programme du
+					<span class="text-gradient">Forum de l'Identité Numérique</span>
+				</h1>
+
+				<p class="programme-subtitle mx-auto mb-0" data-reveal="200">
+					Deux jours d'échanges, de panels et de signatures officielles pour lancer Mobile ID.
+				</p>
+			</div>
+		</section>
+
+		{# TEMPS FORTS (inchangé - repris de ton code initial) #}
+		<section class="section-white programme-section">
+			<div class="container">
+
+				<div class="text-center mb-5" data-reveal="0">
+					<h2 class="section-title programme-section-title mb-3">Temps forts</h2>
+					<p class="section-subtitle programme-section-subtitle mx-auto mb-0">
+						Des temps forts conçus pour aligner les acteurs publics, prives et techniques.
+					</p>
+				</div>
+
+				<div class="row g-4 justify-content-center">
+					<div class="col-12 col-md-6 col-lg-3" data-reveal="0">
+						<div class="programme-feature-card">
+							<div class="programme-feature-icon">
+								<svg width="24" height="24" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M16 11c1.66 0 3-1.57 3-3.5S17.66 4 16 4s-3 1.57-3 3.5S14.34 11 16 11Z" stroke="currentColor" stroke-width="2"/>
+									<path d="M8 11c1.66 0 3-1.57 3-3.5S9.66 4 8 4 5 5.57 5 7.5 6.34 11 8 11Z" stroke="currentColor" stroke-width="2"/>
+									<path d="M12 20c0-3.5 2.5-6 6-6 1.1 0 2 .2 3 .7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+									<path d="M12 20c0-3.5-2.5-6-6-6-1.1 0-2 .2-3 .7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								</svg>
+							</div>
+							<h3 class="programme-feature-title">Discours officiels</h3>
+							<p class="programme-feature-text mb-0">Interventions institutionnelles de haut niveau</p>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-3" data-reveal="100">
+						<div class="programme-feature-card">
+							<div class="programme-feature-icon">
+								<svg width="24" height="24" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M7 7h10v14H7V7Z" stroke="currentColor" stroke-width="2"/>
+									<path d="M9 3h6v4H9V3Z" stroke="currentColor" stroke-width="2"/>
+									<path d="M10 11h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+									<path d="M10 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								</svg>
+							</div>
+							<h3 class="programme-feature-title">État des lieux</h3>
+							<p class="programme-feature-text mb-0">Diagnostic national et expertise régionale</p>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-3" data-reveal="200">
+						<div class="programme-feature-card">
+							<div class="programme-feature-icon">
+								<svg width="24" height="24" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</div>
+							<h3 class="programme-feature-title">Panels thématiques</h3>
+							<p class="programme-feature-text mb-0">Inclusion, services publics, valeur ajoutée</p>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-3" data-reveal="300">
+						<div class="programme-feature-card">
+							<div class="programme-feature-icon">
+								<svg width="24" height="24" viewbox="0 0 24 24" fill="none" aria-hidden="true">
+									<path d="M12 2 20 6v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="2"/>
+									<path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</div>
+							<h3 class="programme-feature-title">Lancement Mobile ID</h3>
+							<p class="programme-feature-text mb-0">Signature officielle et cloture</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		{# AGENDA (DYNAMIQUE) #}
+		<section class="section-gray programme-agenda" id="program-tabs" data-program-tabs>
+			<div class="container">
+
+				<div class="text-center mb-5" data-reveal="0">
+					<h2 class="section-title programme-section-title mb-3">Agenda par jour</h2>
+					<p class="section-subtitle programme-section-subtitle mx-auto mb-4">
+						Les horaires et interventions du forum, avec des discours individualises.
+					</p>
+				</div>
+
+				{% if eventDates is empty %}
+					<div class="programme-agenda-wrap mx-auto">
+						<div class="programme-dayhead" data-reveal="0">
+							<div class="programme-dayhead-title">Agenda indisponible</div>
+							<div class="programme-dayhead-date">Aucune date n’est configurée pour le moment.</div>
+						</div>
+					</div>
+				{% else %}
+
+					{% set activeTab = activeTab|default('jour1') %}
+
+					{# Tabs dynamiques #}
+					<div class="d-flex justify-content-center gap-3 flex-wrap mb-4" data-reveal="100">
+						{% for ed in eventDates %}
+							{% set tabKey = 'jour' ~ loop.index %}
+							<button class="programme-tab {{ activeTab == tabKey ? 'is-active' : '' }}" type="button" data-tab="{{ tabKey }}">
+								{{ ed.startDate|format_datetime(locale='fr', pattern='EEEE d MMM') }}
+							</button>
+						{% endfor %}
+					</div>
+
+					<div class="programme-agenda-wrap mx-auto">
+						{% for ed in eventDates %}
+							{% set tabKey = 'jour' ~ loop.index %}
+							{% set isOpen = (activeTab == tabKey) %}
+
+							<div data-tab-content="{{ tabKey }}" class="{{ isOpen ? '' : 'd-none' }}">
+								<div class="programme-dayhead" data-reveal="0">
+									<div class="programme-dayhead-title">
+										JOUR
+										{{ loop.index }}
+										—
+										{{ ed.startDate|format_datetime(locale='fr', pattern='d MMMM y') }}
+										→
+										{{ ed.endDate|format_datetime(locale='fr', pattern='d MMMM y') }}
+
+										{% if ed.isActive %}
+											<span class="programme-badge badge-emerald ms-2" style="vertical-align:middle;">Actif</span>
+										{% endif %}
+									</div>
+
+									<div class="programme-dayhead-date">
+										{{ ed.startDate|format_datetime(locale='fr', pattern='EEEE d MMMM y') }}
+									</div>
+								</div>
+
+								<div class="programme-list">
+
+									{% if ed.agendas is empty %}
+										<article class="programme-item" data-reveal="0">
+											<div class="programme-content">
+												<h3 class="programme-item-title mb-1">Aucun agenda pour cette date</h3>
+												<p class="programme-item-text mb-0">
+													Le programme sera publié dès validation.
+												</p>
+											</div>
+										</article>
+									{% else %}
+
+										{% for a in ed.agendas %}
+											{# mapping simple catégorie -> couleur badge #}
+											{% set cat = (a.category ?? '')|lower %}
+											{% set badgeClass =
+												(cat matches '/discours|keynote/') ? 'badge-cyan' :
+												(cat matches '/panel|atelier|workshop/') ? 'badge-blue' :
+												(cat matches '/pause|break|dejeuner|déjeuner/') ? 'badge-emerald' :
+												'badge-emerald'
+											%}
+
+											<article class="programme-item" data-reveal="{{ loop.index0 * 80 }}">
+												<div class="programme-time">
+													<div class="t-start">{{ a.startTime ? a.startTime|date('H:i') : '—' }}</div>
+													<div class="t-end">{{ a.endTime ? a.endTime|date('H:i') : '—' }}</div>
+												</div>
+
+												<div class="programme-content">
+													<div class="programme-badges">
+														{% if a.category %}
+															<span class="programme-badge {{ badgeClass }}">{{ a.category }}</span>
+														{% endif %}
+													</div>
+
+													<h3 class="programme-item-title">{{ a.title }}</h3>
+
+													{% if a.description %}
+														<p class="programme-item-text mb-0">{{ a.description }}</p>
+													{% endif %}
+												</div>
+											</article>
+										{% endfor %}
+
+									{% endif %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+
+				{% endif %}
+
+			</div>
+		</section>
+
+	</main>
+{% endblock %}

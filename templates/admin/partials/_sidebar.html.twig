@@ -1,0 +1,42 @@
+{% set route = app.request.attributes.get('_route') %}
+
+<div class="admin-sidebar-inner">
+	<div class="admin-brand px-4 py-4">
+		<div class="d-flex align-items-center gap-2">
+			<span class="admin-mark"></span>
+			<div class="lh-sm">
+				<div class="text-white fw-bold">Forum Mobile ID</div>
+				<div class="text-white-60 small">Administration</div>
+			</div>
+		</div>
+	</div>
+
+	<nav class="admin-nav px-3 pb-4">
+		<a data-admin-link class="admin-navlink {{ route == 'admin_dashboard' ? 'active' : '' }}" href="{{ path('admin_dashboard') }}">
+			Tableau de bord
+		</a>
+
+		{# Placeholders routes (tu les créeras ensuite) #}
+		<a data-admin-link class="admin-navlink" href="#">
+			Gestions des dates
+		</a>
+		<a data-admin-link class="admin-navlink" href="#">
+			Gestions d'agenda
+		</a>
+		<a data-admin-link class="admin-navlink" href="#">
+			Les inscriptions
+		</a>
+		<a data-admin-link class="admin-navlink" href="#">
+			Partenaires
+		</a>
+	</nav>
+
+	<div class="mt-auto px-4 pb-4">
+		<div class="admin-mini">
+			<div class="text-white fw-bold mb-1">Conseil</div>
+			<div class="text-white-60 small" style="line-height:1.6;">
+				Utilise le menu pour naviguer. Les KPI seront branchés sur la base de données ensuite.
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+{% set route = app.request.attributes.get('_route') %}
+
+<nav id="siteNavbar" class="navbar navbar-expand-lg fixed-top site-navbar">
+	<div class="container">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="{{ path('app_home') }}">
+			<img src="{{ asset('assets/logo.png') }}" alt="Mobile ID Djibouti" class="site-logo">
+		</a>
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="mainNav">
+			<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+				<li class="nav-item">
+					<a class="nav-link site-navlink {{ route == 'home' ? 'is-active' : '' }}" href="{{ path('app_home') }}">
+						Accueil
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link site-navlink {{ route == 'about' ? 'is-active' : '' }}" href="{{ path('app_apropos') }}">
+						À propos
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link site-navlink {{ route == 'program' ? 'is-active' : '' }}" href="{{ path('app_programme') }}">
+						Programme
+					</a>
+				</li>
+
+				<li class="nav-item ms-lg-2">
+					<a class="btn site-btn-inscription" href="{{ path('app_inscriptions') }}">
+						Inscription
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
